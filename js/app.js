@@ -12,11 +12,26 @@ function alterarStatus(id){
             imagem.classList.remove('dashboard__item__img--rented');
             botao.classList.remove('dashboard__item__button--return');
             botao.textContent = 'Alugar';
+            jogosAlugados = jogosAlugados - 1;
         }
         
     }else{
         imagem.classList.add('dashboard__item__img--rented');
         botao.classList.add('dashboard__item__button--return');
         botao.textContent = 'Devolver';
+        jogosAlugados = jogosAlugados + 1;
     }
+
+    contarEExibirJogosAlugados();
 };
+
+let jogosAlugados = 0;
+function contarEExibirJogosAlugados(){
+    alert(`Total de jogos alugados: ${jogosAlugados}`);
+};
+
+// Inicializa a contagem considerando que os jogos já começam alugados
+document.addEventListener('DOMContentLoaded', function() {
+    jogosAlugados = document.querySelectorAll('.dashboard__item__img--rented').length;
+    contarEExibirJogosAlugados();
+});
